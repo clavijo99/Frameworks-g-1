@@ -5,6 +5,8 @@ import Profile from "@/components/Profile";
 // importar un componente
 import Saludar from "@/components/Saludar";
 
+import Lista from "@/components/Lista";
+
 
 export default function Home() {
 
@@ -56,6 +58,8 @@ export default function Home() {
 
       { /* Llamar al componente saludar  */ }
       <Saludar name="Camilo" edad={26} />
+
+      <Lista numeros={[1,2,3,4,5]} />
     </div>
   );
 }
