@@ -2,6 +2,9 @@
 
 import Profile from "@/components/Profile";
 
+// importar un componente
+import Saludar from "@/components/Saludar";
+
 
 export default function Home() {
 
@@ -50,6 +53,9 @@ export default function Home() {
 
         ),)
       }
+
+      { /* Llamar al componente saludar  */ }
+      <Saludar />
     </div>
   );
 }
