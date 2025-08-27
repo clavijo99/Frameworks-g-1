@@ -55,7 +55,7 @@ export default function Home() {
       }
 
       { /* Llamar al componente saludar  */ }
-      <Saludar name="Camilo" />
+      <Saludar name="Camilo" edad={26} />
     </div>
   );
 }
