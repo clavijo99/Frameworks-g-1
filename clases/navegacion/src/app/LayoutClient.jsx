@@ -9,10 +9,10 @@ import {
 
 
 // paginas que no quiero mostrar el header y footer
-const hiddenPaths = ['/loging', '/register'];
+const hiddenPaths = ['/login', '/register'];
 
 
-export default function LayoutClient({ childern }) {
+export default function LayoutClient({ children }) {
 
     // creamos una constante para manejar el path
     const pathName = usePathname();
@@ -28,8 +28,8 @@ export default function LayoutClient({ childern }) {
 
             {!hidden && <Header />}
 
-            <main style={{ flex: 1 }}>
-                {childern}
+            <main style={{ flex: 1}}>
+                {children}
             </main>
 
             {!hidden && <Footer />}

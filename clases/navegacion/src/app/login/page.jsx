@@ -1,5 +1,10 @@
-export default function Login(){
+'use client'
+
+export default function Login() {
     return (
-        <h1>Login</h1>
+        <div>
+            <h1 className=" text-white">Login</h1>
+
+        </div>
     )
 }
