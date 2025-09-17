@@ -9,7 +9,7 @@ import {
 
 
 // paginas que no quiero mostrar el header y footer
-const hiddenPaths = ['/login', '/register'];
+const hiddenPaths = ['/login', '/register', '/vision', '/mision'];
 
 
 export default function LayoutClient({ children }) {
