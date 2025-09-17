@@ -2,19 +2,20 @@
 
 import { useState } from 'react'
 import ButtonCustom from "@/components/common/ButtonCustom";
+import Input from '@/components/common/Input';
 
 export default function Home() {
   const [nombre, setNombre] = useState('Camilo')
-  const [numero, setNumero ] = useState(0)
+  const [numero, setNumero] = useState(0)
 
-  function incrementar(){
+  function incrementar() {
     setNumero((n) => n + 1)
   }
 
-  function decrementar(){
-    if( numero > 0 ){
+  function decrementar() {
+    if (numero > 0) {
       setNumero((n) => n - 1)
-    }else{
+    } else {
       alert('El numero no puede ser negativo')
     }
   }
@@ -31,7 +32,9 @@ export default function Home() {
           <ButtonCustom texto="-" click={decrementar} />
         </div>
 
-        <p className='py-6'>El numero {numero} es { numero %2== 0 ? 'Par': 'Impar' }</p>
+        <p className='py-6'>El numero {numero} es {numero % 2 == 0 ? 'Par' : 'Impar'}</p>
+
+        {numero == 20 && <ButtonCustom texto='Reset' click={() => setNumero(0)} />}
       </div>
     </div>
   );
