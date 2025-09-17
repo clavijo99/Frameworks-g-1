@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import ButtonCustom from "@/components/common/ButtonCustom";
 import Input from '@/components/common/Input';
+import InpuntCustom from '@/components/common/Input';
 
 export default function Home() {
   const [nombre, setNombre] = useState('Camilo')
@@ -36,6 +37,10 @@ export default function Home() {
 
         {numero == 20 && <ButtonCustom texto='Reset' click={() => setNumero(0)} />}
       </div>
+
+      <InpuntCustom isPassword={true} />
+      <InpuntCustom isPassword={false} />
+
     </div>
   );
 }

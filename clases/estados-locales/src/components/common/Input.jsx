@@ -1,16 +1,16 @@
 import { useState } from "react";
 
-export default function InpuntCustom({isPassword}){
+export default function InpuntCustom({ isPassword }) {
 
 
     const [showPassword, setShowPAssword] = useState(false)
 
     return (
-        <div>
-            <input type="text" />
-            <div>
-                { showPassword ? '🙈' : '👀' }
-            </div>
+        <div className="flex border rounded">
+            <input type={isPassword ? showPassword ? 'text' : 'password' : 'text'} />
+            {isPassword && <div onClick={() => setShowPAssword((v) => !v)}>
+                {showPassword ? '🙈' : '👀'}
+            </div>}
         </div>
     )
 
