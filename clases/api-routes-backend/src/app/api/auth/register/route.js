@@ -13,7 +13,7 @@ export async function POST(req) {
             [name, email, hashedPasword]
         );
 
-        return new Response.json(result.rows[0], { status: 201 });
+        return  Response.json(result.rows[0], { status: 201 });
     } catch (error) {
         console.log(error);
         return new Response('Error al registrar el usuario', { status: 500 });
