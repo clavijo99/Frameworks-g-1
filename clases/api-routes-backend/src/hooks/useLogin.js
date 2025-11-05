@@ -28,7 +28,6 @@ export const useLogin = () => {
             return false
         } finally{
             setLoading(false)
-            return false
         }
     }
 

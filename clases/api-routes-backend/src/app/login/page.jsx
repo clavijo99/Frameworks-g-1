@@ -16,6 +16,9 @@ export default function Login() {
            const result = await  login(email, password)
            if(result){
             console.log({data})
+           }else{
+            alert('credenciales erroneas')
+            console.log({data})
            }
         }catch(err){
             console.log(err)
