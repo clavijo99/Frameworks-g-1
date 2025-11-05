@@ -13,8 +13,10 @@ export default function Login() {
 
     const handleLogin = async () => {
         try{
-           await  login(email, password)
-           console.log(data)
+           const result = await  login(email, password)
+           if(result){
+            console.log({data})
+           }
         }catch(err){
             console.log(err)
         }

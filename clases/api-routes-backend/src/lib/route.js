@@ -3,3 +3,10 @@ export const publicRoutes = [
     '/register',
     '/',
 ];
+
+
+
+export const publicRoutesApi = [    
+    '/api/auth/login',
+    '/api/auth/register',
+];

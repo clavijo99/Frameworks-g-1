@@ -1,12 +1,13 @@
-import { publicRoutes } from "./route";
+import { publicRoutesApi } from "./route";
 import { getAccessToken, getRefreshToken, setTokens, clearTokens } from "./auth";
 
 
 export async function apiFetch(url, options = {}) {
     
-    const isPublicRoute = publicRoutes.some(route => url.startswith(route))
+    const isPublicRoute = publicRoutesApi.some(route => url.startsWith(route))
 
     let accessToken = getAccessToken()
+    let refresh = getRefreshToken()
 
 
     const headers = {
@@ -22,21 +23,36 @@ export async function apiFetch(url, options = {}) {
     }
 
 
-    const response = await fetch(url, config);
+
+    let response = await fetch(url, config);
 
 
     if(response.status === 401 && !isPublicRoute){
+        const refreshed = await refreshToken(refresh)
 
-        const refreshed = await 
+        if(refresh){
+            accessToken = getAccessToken();
+
+            const retryHeader = {
+                ...headers,
+                'Authorization': `Bearer ${accessToken}`
+            }
+
+            response = await fetch(url,
+                { ...options, headers: retryHeader }
+            )
+        }else{
+            clearTokens()
+            throw new Error('No se logro refrescar los tokens')
+        }
 
     }
-
+    return response
 }
 
 
 async function refreshToken(refresh) {
     if(!refresh) return false
-
 
     try{
         const response = await fetch('api/auth/refresh', {
@@ -46,7 +62,19 @@ async function refreshToken(refresh) {
             },
             body: JSON.stringify({refresh})
         })
-    } catch(error){
 
+        if(!response.ok) return false;
+
+        const data = await response.json();
+
+        if(data.access_token && data.refresh_token){
+            setTokens(data.access_token, data.refresh_token)
+            return true;
+        }
+        return false
+    } catch(error){
+        console.log(`Error refresh Token: ${error}`)
+        clearTokens()
+        return false
     }
 }
